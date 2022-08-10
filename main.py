@@ -1,3 +1,6 @@
+import csv
+import pandas
+
 class Staff:
 
     def __init__(self, role, dept, salary):
@@ -6,7 +9,7 @@ class Staff:
         self.salary = salary
 
     def show_details(self):
-        str = f"name:{self.name.title()}\nAge:{self.age}\nRole:{self.role.title()}\nDepartment:{self.dept.title()}\n\n"
+        str = f"Name:{self.name.title()}\nAge:{self.age}\nRole:{self.role.title()}\nDepartment:{self.dept.title()}\n\n"
         return str
 
 
@@ -29,8 +32,7 @@ while is_on:
     <<< Welcome >>>
     1: New member
     2:View all staff
-    3: Search
-    4: Exit
+    3: Exit
     
     > '''))
 
@@ -51,7 +53,14 @@ while is_on:
             print(menu_options)
 
 
-    elif menu_options == 4:
+
+    elif menu_options == 2:
+        file = open("staff-details", "r")
+        data = file.read()
+        print(f"<<<STAFF LIST>>>\n{data.strip()}")
+
+
+    elif menu_options == 3:
         is_on = False
 
 
