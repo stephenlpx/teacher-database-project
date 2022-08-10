@@ -6,7 +6,7 @@ class Staff:
         self.salary = salary
 
     def show_details(self):
-        str = f"name:{self.name}\nAge:{self.age}\nRole:{self.role}\nDepartment:{self.dept}\n\n"
+        str = f"name:{self.name.title()}\nAge:{self.age}\nRole:{self.role.title()}\nDepartment:{self.dept.title()}\n\n"
         return str
 
 
@@ -24,17 +24,34 @@ class Teachers(Staff):
 is_on = True
 
 while is_on:
-    staff_type = input("Would you like to add a new member of staff?: ").upper()
-    if staff_type == "Y":
-        teacher_name = input("Teacher name: ")
-        teacher_age = input("Teacher age: ")
-        teacher = Teachers(teacher_name, teacher_age)
 
-        f = open("staff-details", "a")
-        f.write(f"{teacher.show_details()}")
+    menu_options = int(input('''
+    <<< Welcome >>>
+    1: New member
+    2:View all staff
+    3: Search
+    4: Exit
+    
+    > '''))
 
 
-    elif staff_type == "N":
+    if menu_options == 1:
+
+        staff_type = input("Would you like to add a new member of staff?: ").upper()
+        if staff_type == "Y":
+            teacher_name = input("Teacher name: ")
+            teacher_age = input("Teacher age: ")
+            teacher = Teachers(teacher_name, teacher_age)
+
+            f = open("staff-details", "a")
+            f.write(f"{teacher.show_details()}")
+
+
+        elif staff_type == "N":
+            print(menu_options)
+
+
+    elif menu_options == 4:
         is_on = False
 
 
